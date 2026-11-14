@@ -6,6 +6,8 @@ A bouncy take on Tic-Tac-Toe built with React and Next.js. Pick a character, the
 
 ## How to play
 
+**Play it live:** https://jelly-tac-toe.vercel.app
+
 1. Choose "2 players" or "vs computer".
 2. Each player types a name and picks one of six characters.
 3. Take turns placing your character on the 3×3 board. Three in a row wins.
