@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  --radius: 0.875rem;
+  --background: #171A3A;
+  --foreground: #FFFFFF;
+  --card: #20244F;
+  --card-foreground: #FFFFFF;
+  --primary: #FF7A45;
+  --primary-foreground: #2A1206;
+  --secondary: #262B5E;
+  --secondary-foreground: #FFFFFF;
+  --muted: #262B5E;
+  --muted-foreground: #B9BCE0;
+  --accent: #30367A;
+  --accent-foreground: #FFFFFF;
+  --border: #343A78;
+  --input: #343A78;
+  --ring: #FFC93C;
+  --cell: #262B5E;
+  --cell-hover: #30367A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cell: var(--cell);
+  --color-cell-hover: var(--cell-hover);
+  --font-sans: var(--font-nunito);
+  --font-display: var(--font-fredoka);
+}
+
+body {
+  min-height: 100dvh;
+  color: var(--foreground);
+  background: radial-gradient(circle at 50% 0%, #232863 0%, #171A3A 60%) fixed;
+  background-color: var(--background);
+}
+
+@keyframes jelly-in {
+  0% { transform: scale(0); }
+  55% { transform: scale(1.18, 0.86); }
+  75% { transform: scale(0.94, 1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes jelly-bob {
+  50% { transform: translateY(-6%); }
+}
+
+@keyframes jelly-jump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-22%) scale(0.94, 1.08); }
+  60% { transform: translateY(0) scale(1.1, 0.9); }
+}
+
+@keyframes jelly-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+@keyframes jelly-blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+@keyframes jelly-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.jelly-in { animation: jelly-in 350ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.jelly-bob { animation: jelly-bob 2.4s ease-in-out infinite; }
+.jelly-jump {
+  animation: jelly-jump 700ms ease-in-out 2 both;
+  animation-delay: var(--jelly-delay, 0ms);
+}
+.jelly-wobble { animation: jelly-wobble 500ms ease-in-out both; }
+.jelly-sag { transform: translateY(6%) scale(1.04, 0.92); transition: transform 300ms ease-out; }
+.jelly-blink {
+  animation: jelly-blink var(--blink-duration, 4s) infinite;
+  animation-delay: var(--blink-delay, 0s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.jelly-rise { animation: jelly-rise 200ms ease-out both; }
+.jelly-shadow { filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.25)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .jelly-in,
+  .jelly-bob,
+  .jelly-jump,
+  .jelly-wobble,
+  .jelly-blink,
+  .jelly-rise {
+    animation: none;
+  }
+  .jelly-sag {
+    transition: none;
+  }
+}
